@@ -2,16 +2,18 @@ package ru.avalon.java.j20.labs.models;
 
 /**
  * Модель представления о точке.
+ * @param <T>
  */
-public class Point {
+public class Point<T extends Number> {
+
     /**
      * Абсцисса точки.
      */
-    private final int x;
+    private final T x;
     /**
      * Ордината точки.
      */
-    private final int y;
+    private final T y;
 
     /**
      * Основной конструктор класса.
@@ -19,9 +21,9 @@ public class Point {
      * @param x абсцисса точки
      * @param y ордината точки
      */
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Point(T x, T y) {
+        this.x = (T) x;
+        this.y = (T) y;
     }
 
     /**
@@ -29,7 +31,7 @@ public class Point {
      *
      * @return x-координата точки.
      */
-    public int getX() {
+    public T getX() {
         return x;
     }
 
@@ -38,20 +40,19 @@ public class Point {
      *
      * @return y-координата точки.
      */
-    public int getY() {
+    public T getY() {
         return y;
     }
 
     /**
      * Возвращает дистанцию от точки до точки.
      *
-     * @param point точка, до которой следует вычислить
-     *              дистанцию.
+     * @param point точка, до которой следует вычислить дистанцию.
      * @return дистанция между точками
      */
     public double distanceTo(Point point) {
-        float dx = x - point.x;
-        float dy = y - point.y;
+        double dx = x.doubleValue() - point.x.doubleValue();
+        double dy = y.doubleValue() - point.y.doubleValue();
         return Math.sqrt(dx * dx + dy * dy);
     }
 }
