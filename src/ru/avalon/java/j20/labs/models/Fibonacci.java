@@ -18,40 +18,56 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    private final int fnumbers[];
+    private int next;
+
+    public Fibonacci(int length) {
+        fnumbers = new int[length];
+        if (length > 0) {
+            fnumbers[0] = 0;
+            if (length > 1) {
+                fnumbers[1] = 1;
+                if (length > 2) {
+                    for (int i = 2; i < fnumbers.length; i++) {
+                        fnumbers[i] = fnumbers[i - 1] + fnumbers[i - 2];
+                    }
+                }
+            }
+        }
+    }
+
     /**
-     * Итератор, выполняющий обход последовательности
-     * чисел Фибоначчи.
+     * Итератор, выполняющий обход последовательности чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
+    private class FibonacciIterator implements Iterator<Integer> {
 
         /**
-         * Определяет, есть ли следующее значение
-         * последовательности чисел Фибоначчи.
+         * Определяет, есть ли следующее значение последовательности чисел
+         * Фибоначчи.
          *
-         * @return {@code true}, если следующее число
-         * последовательности существует. В обратном случае
-         * {@code false}.
+         * @return {@code true}, если следующее число последовательности
+         * существует. В обратном случае {@code false}.
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return next < fnumbers.length;
         }
 
         /**
-         * Возвращает следующее число последовательности
-         * чисел Фибоначчи.
+         * Возвращает следующее число последовательности чисел Фибоначчи.
          *
          * @return следующее число последовательности.
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            //throw new UnsupportedOperationException("Not implemented yet!");
+            return (Integer) fnumbers[next++];
         }
     }
 
     /**
-     * Возвращает итератор, позволяющий выполнить обход
-     * последовательности чисел Фибоначчи.
+     * Возвращает итератор, позволяющий выполнить обход последовательности чисел
+     * Фибоначчи.
      *
      * @return итератор последовательности чисел Фибоначчи
      */
