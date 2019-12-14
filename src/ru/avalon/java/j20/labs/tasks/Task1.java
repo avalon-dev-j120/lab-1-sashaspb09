@@ -14,6 +14,7 @@ import ru.avalon.java.j20.labs.models.Numbers;
  * несколько методов, обобщённых с указанной точностью.
  */
 public class Task1 implements Task {
+    
 
     /**
      * Фабрика, создающая массивы случайных чисел.
@@ -25,22 +26,25 @@ public class Task1 implements Task {
      */
     @Override
     public void run() {
-        Integer[] array = arrayFactory.getInstance(20);
-       
-
-        System.out.println("Начальный массив int: " + Arrays.toString(array));
- 
-       
-        System.out.println("(int) min = " + Numbers.min(array));
-        System.out.println("(double) min = " + (double)Numbers.min(array));
-
-       
-        System.out.println("(int) max = " + Numbers.max(array));
+        System.out.println("In progress: 1 Task ");
         
-        System.out.println("(double) max = " + (double)Numbers.max(array));
-
+        Integer[] arrayi = arrayFactory.getInstance(20);
+        Double[] arrayd = new Double[arrayi.length];
         
-        System.out.println("Среднее арифметическое чисел массива = " + Numbers.avg(array) );
+         System.out.println("Начальный массив int: " + Arrays.toString(arrayi));
+  
+        System.out.print("Массив double: ");
+        for (int i = 0; i < arrayi.length; i++){
+            arrayd[i]=(double)arrayi[i];
+            System.out.print(arrayd[i] + " ");
+            
+        }      
+       System.out.println();
+        System.out.println("(int) min = " + Numbers.min(arrayi));
+        System.out.println("(double) min = " + (double)Numbers.min(arrayd));    
+        System.out.println("(int) max = " + Numbers.max(arrayi));
+        System.out.println("(double) max = " + (double)Numbers.max(arrayd));       
+        System.out.println("Среднее арифметическое чисел массива = " + Numbers.avg(arrayi) );
         System.out.println();
         /*
          * TODO(Студент): Выполните задание №1
